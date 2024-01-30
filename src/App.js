@@ -1,13 +1,29 @@
-import React , { useState } from 'react';
+import React, { useState } from 'react';
+import Header from './components/header';
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
 
+  const increment = () => {
+    setCount(count + 1);
+  };
+
+  const decrement = () => {
+    setCount(count - 1);
+  };
+
+  const reset = () => {
+    setCount(0);
+  };
+
   return (
     <div>
+      <Header />
       <h1>Counter: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
     </div>
   );
 }
