@@ -1,31 +1,43 @@
-import React, { useState } from 'react';
-import Header from './components/header';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+} from "react-router-dom";
+import Home from "./Pages";
+import About from "./Pages/about";
+import Events from "./Pages/events";
+import AnnualReport from "./Pages/annual";
+import Teams from "./Pages/team";
+import Blogs from "./Pages/blogs";
+import SignUp from "./Pages/signup";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => {
-    setCount(count + 1);
-  };
-
-  const decrement = () => {
-    setCount(count - 1);
-  };
-
-  const reset = () => {
-    setCount(0);
-  };
-
-  return (
-    <div>
-      <Header />
-      <h1>Counter: {count}</h1>
-      <button onClick={increment}>Increment</button>
-      <button onClick={decrement}>Decrement</button>
-      <button onClick={reset}>Reset</button>
-    </div>
-  );
+	return (
+		<Router>
+			<Navbar />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/about" element={<About />} />
+				<Route
+					path="/events"
+					element={<Events />}
+				/>
+				<Route
+					path="/annual"
+					element={<AnnualReport />}
+				/>
+				<Route path="/team" element={<Teams />} />
+				<Route path="/blogs" element={<Blogs />} />
+				<Route
+					path="/sign-up"
+					element={<SignUp />}
+				/>
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
